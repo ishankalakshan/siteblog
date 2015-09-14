@@ -41,13 +41,13 @@
 			
 				<?php elseif ( get_bloginfo( 'description' ) || get_bloginfo( 'title' ) ) : ?>
 								
-						<h1 class="blog-title">
+						<!-- <h1 class="blog-title">
 							<a href="<?php echo esc_url( home_url() ); ?>" title="<?php echo esc_attr( get_bloginfo( 'title' ) ); ?> &mdash; <?php echo esc_attr( get_bloginfo( 'description' ) ); ?>" rel="home"><?php echo esc_attr( get_bloginfo( 'title' ) ); ?></a>
-						</h1>
+						</h1> -->
 						
 						<?php if ( get_bloginfo( 'description' ) ) { ?>
 						
-							<h3 class="blog-description"><?php echo esc_attr( get_bloginfo( 'description' ) ); ?></h3>
+							<!-- <h3 class="blog-description"><?php echo esc_attr( get_bloginfo( 'description' ) ); ?></h3> -->
 							
 						<?php } ?>
 										

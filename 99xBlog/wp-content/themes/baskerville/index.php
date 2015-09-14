@@ -27,6 +27,7 @@
 			<div class="material-card">
 
 				<div class="blogger-title">
+				<img src="/99xblog/99xBlog/wp-content/themes/baskerville/images/xian.png">
 					<h2>Xian Blog</h2>
 				</div>
 
@@ -49,6 +50,7 @@
 		<div class="material-card">
 
 			<div class="blogger-title">
+			<img src="/99xblog/99xBlog/wp-content/themes/baskerville/images/Research.png">
 				<h2>Research Blog</h2>
 			</div>
 
@@ -71,6 +73,7 @@
 		<div class="material-card">
 
 			<div class="blogger-title">
+			<img src="/99xblog/99xBlog/wp-content/themes/baskerville/images/Technology.png">
 				<h2>Technology Blog</h2>
 			</div>
 
