@@ -566,7 +566,7 @@ body a {
 
 .post-container {
 	width: 100%;
-	margin-top:20px;
+
 }
 
 .hentry,
@@ -2905,8 +2905,8 @@ img#wpstats { display: none; } /* Silly WordPress stats */
 .material-card {
     display: inline-block;
     vertical-align: top;
-        width: 456px;
-    height: 278px;
+    width:28.65vw;
+    /*height: 278px;*/
     position: relative;
     overflow: hidden;
     margin: 10px;
@@ -2970,7 +2970,7 @@ img#wpstats { display: none; } /* Silly WordPress stats */
 .blogger-title {
 	width: 100%;
 	display: block;
-/* background-color: #FF8100;*/
+ background-color: #E5E5E5;
  margin: 0;
  padding: 0;
  height: 200px;

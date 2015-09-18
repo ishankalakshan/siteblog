@@ -27,8 +27,8 @@
 			<div class="material-card">
 
 				<div class="blogger-title">
-				<img src="/99xblog/99xBlog/wp-content/themes/baskerville/images/xian.png">
-					<h2>Xian Blog</h2>
+				<img src="/99x/99xBlog/wp-content/themes/baskerville/images/xian.png">
+					<!-- <h2>Xian Blog</h2> -->
 				</div>
 
 		    	<?php  $cat_name = 'xian'; query_posts('category_name='.$cat_name); while (have_posts()) :the_post(); ?>
@@ -50,8 +50,8 @@
 		<div class="material-card">
 
 			<div class="blogger-title">
-			<img src="/99xblog/99xBlog/wp-content/themes/baskerville/images/Research.png">
-				<h2>Research Blog</h2>
+			<img src="/99x/99xBlog/wp-content/themes/baskerville/images/Research.png">
+				<!-- <h2>Research Blog</h2> -->
 			</div>
 
 				<?php  $cat_name = 'research'; query_posts('category_name='.$cat_name); while (have_posts()) :the_post(); ?>
@@ -73,8 +73,8 @@
 		<div class="material-card">
 
 			<div class="blogger-title">
-			<img src="/99xblog/99xBlog/wp-content/themes/baskerville/images/Technology.png">
-				<h2>Technology Blog</h2>
+			<img src="/99x/99xBlog/wp-content/themes/baskerville/images/Technology.png">
+				<!-- <h2>Technology Blog</h2> -->
 			</div>
 
 				<?php  $cat_name = 'technology'; query_posts('category_name='.$cat_name); while (have_posts()) :the_post(); ?>
