@@ -14,8 +14,8 @@ You can use the following helper functions:
 * 	$attrs = array(
 * 		'request_url'		=> '/some-url/',
 * 		'destination_url'	=> '/new-url/',
-* 		'newwindow'			=> 1,
-* 		'nofollow'			=> 0,
+* 		'newwindow'		=> 1,
+* 		'nofollow'		=> 0,
 * 	);
 * 	$mytest_add = qppr_create_quick_redirect( $attrs );
 *

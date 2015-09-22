@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Quick Page/Post Redirect Plugin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: Fri Jun 19 2015 23:42:16 GMT-0400 (Eastern Daylight Time)\n"
-"PO-Revision-Date: Tue Aug 18 2015 15:54:28 GMT-0400 (Eastern Daylight Time)\n"
+"PO-Revision-Date: Fri Sep 18 2015 12:48:37 GMT-0400 (Eastern Daylight Time)\n"
 "Last-Translator: Tester <admin@fischercreativemedia.com>\n"
 "Language-Team: \n"
 "Language: English\n"
@@ -21,6 +21,52 @@ msgstr ""
 "esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
 "X-Loco-Target-Locale: en_US\n"
 "X-Generator: Loco - https://localise.biz/"
+
+#. Name of the plugin
+msgid "Quick Page/Post Redirect Plugin"
+msgstr "Quick Page/Post Redirect Plugin"
+
+#. URI of the plugin
+msgid ""
+"http://www.fischercreativemedia.com/wordpress-plugins/quick-pagepost-"
+"redirect-plugin"
+msgstr ""
+"http://www.fischercreativemedia.com/wordpress-plugins/quick-pagepost-"
+"redirect-plugin"
+
+#. Description of the plugin
+msgid ""
+"Redirect Pages, Posts or Custom Post Types to another location quickly (for "
+"internal or external URLs). Includes individual post/page options, redirects "
+"for Custom Post types, non-existant 301 Quick Redirects (helpful for sites "
+"converted to WordPress), New Window functionality, and rel=nofollow "
+"functionality."
+msgstr ""
+"Redirect Pages, Posts or Custom Post Types to another location quickly (for "
+"internal or external URLs). Includes individual post/page options, redirects "
+"for Custom Post types, non-existant 301 Quick Redirects (helpful for sites "
+"converted to WordPress), New Window functionality, and rel=nofollow "
+"functionality."
+
+#. Author of the plugin
+msgid "Don Fischer"
+msgstr "Don Fischer"
+
+#. Author URI of the plugin
+msgid "http://www.fischercreativemedia.com"
+msgstr "http://www.fischercreativemedia.com"
+
+#: ../page_post_redirect_plugin.php:2254
+msgid ""
+"would redirect 10 seconds after the required element is loaded (i.e., body "
+"or an element with a specific class). *Intsant will still have a 'slight' "
+"delay, as some content needs to load before the redirect occurs. Settings on "
+"individual pages will override this setting."
+msgstr ""
+"would redirect 10 seconds after the required element is loaded (i.e., body "
+"or an element with a specific class). *Intsant will still have a 'slight' "
+"delay, as some content needs to load before the redirect occurs. Settings on "
+"individual pages will override this setting."
 
 #: ../page_post_redirect_plugin.php:272
 msgid "New Meta Redirect options."
@@ -563,7 +609,7 @@ msgstr ""
 "All Redirects and Settings will be removed from the database. This can NOT "
 "be undone!"
 
-#: ../page_post_redirect_plugin.php:1098 ../page_post_redirect_plugin.php:2278
+#: ../page_post_redirect_plugin.php:1098 ../page_post_redirect_plugin.php:2275
 msgid "Save Changes"
 msgstr "Save Changes"
 
@@ -691,7 +737,7 @@ msgstr ""
 "setting the <strong>Redirect Seconds</strong> - if set too low, the page "
 "will not compeletely load. "
 
-#: ../page_post_redirect_plugin.php:1184 ../page_post_redirect_plugin.php:2256
+#: ../page_post_redirect_plugin.php:1184 ../page_post_redirect_plugin.php:2253
 msgid "Redirect Seconds"
 msgstr "Redirect Seconds"
 
@@ -715,7 +761,7 @@ msgstr ""
 "longer than instant, depending on how much content needs to load before the "
 "trigger happens."
 
-#: ../page_post_redirect_plugin.php:1190 ../page_post_redirect_plugin.php:2260
+#: ../page_post_redirect_plugin.php:1190 ../page_post_redirect_plugin.php:2257
 msgid "Redirect Trigger"
 msgstr "Redirect Trigger"
 
@@ -763,7 +809,7 @@ msgstr ""
 "Do not use a tag name that is common, like \"a\" or \"div\" as it will trigger "
 "on all events."
 
-#: ../page_post_redirect_plugin.php:1199 ../page_post_redirect_plugin.php:2264
+#: ../page_post_redirect_plugin.php:1199 ../page_post_redirect_plugin.php:2261
 msgid "Append Content To"
 msgstr "Append Content To"
 
@@ -793,7 +839,7 @@ msgstr ""
 "When no class, id or tag name is used, the <strong>body</strong> tag will be "
 "used."
 
-#: ../page_post_redirect_plugin.php:1206 ../page_post_redirect_plugin.php:2268
+#: ../page_post_redirect_plugin.php:1206 ../page_post_redirect_plugin.php:2265
 msgid "Page Content"
 msgstr "Page Content"
 
@@ -1128,15 +1174,15 @@ msgstr ""
 msgid "method."
 msgstr "method."
 
-#: ../page_post_redirect_plugin.php:2244
+#: ../page_post_redirect_plugin.php:2241
 msgid "Meta Redirect Settings"
 msgstr "Meta Redirect Settings"
 
-#: ../page_post_redirect_plugin.php:2245
+#: ../page_post_redirect_plugin.php:2242
 msgid "Settings Updated"
 msgstr "Settings Updated"
 
-#: ../page_post_redirect_plugin.php:2246
+#: ../page_post_redirect_plugin.php:2243
 msgid ""
 "This section is for updating options for redirects that use the \"meta "
 "refresh\" funcitonality for redirecting."
@@ -1144,7 +1190,7 @@ msgstr ""
 "This section is for updating options for redirects that use the \"meta "
 "refresh\" funcitonality for redirecting."
 
-#: ../page_post_redirect_plugin.php:2247
+#: ../page_post_redirect_plugin.php:2244
 msgid ""
 "Using the setting below, you can add elements or a message to the page that "
 "is loaded before tht redirect, or just allow the page to load as normal "
@@ -1154,11 +1200,11 @@ msgstr ""
 "is loaded before tht redirect, or just allow the page to load as normal "
 "until the redirect reaches the number of seconds you have set below."
 
-#: ../page_post_redirect_plugin.php:2252
+#: ../page_post_redirect_plugin.php:2249
 msgid "Load Page Content?"
 msgstr "Load Page Content?"
 
-#: ../page_post_redirect_plugin.php:2253
+#: ../page_post_redirect_plugin.php:2250
 msgid ""
 "Check if you want the normal page to load before redirect happens (if "
 "redirect is 0 seconds, it may not load fully)."
@@ -1166,21 +1212,11 @@ msgstr ""
 "Check if you want the normal page to load before redirect happens (if "
 "redirect is 0 seconds, it may not load fully)."
 
-#: ../page_post_redirect_plugin.php:2257
+#: ../page_post_redirect_plugin.php:2254
 msgid "instant"
 msgstr "instant"
 
-#: ../page_post_redirect_plugin.php:2257
-msgid ""
-"would redirect 10 seconds after the required element is loaded (i.e., body "
-"or an element with a specific class). *Intsant will still have a 'slight' "
-"delay, as some content needs to load before the redirect occurs."
-msgstr ""
-"would redirect 10 seconds after the required element is loaded (i.e., body "
-"or an element with a specific class). *Intsant will still have a 'slight' "
-"delay, as some content needs to load before the redirect occurs."
-
-#: ../page_post_redirect_plugin.php:2261
+#: ../page_post_redirect_plugin.php:2258
 #, php-format
 msgid ""
 "The %1$s, %2$s or tag name of the element you want to load before triggering "
@@ -1195,7 +1231,7 @@ msgstr ""
 "you would type %5$s above. To redirect after an element with a class or ID, "
 "use %6$s or %7$s."
 
-#: ../page_post_redirect_plugin.php:2265
+#: ../page_post_redirect_plugin.php:2262
 #, php-format
 msgid ""
 "The %1$s, %2$s or tag name of the element you want the content to load into "
@@ -1204,7 +1240,7 @@ msgstr ""
 "The %1$s, %2$s or tag name of the element you want the content to load into "
 "when the page loads."
 
-#: ../page_post_redirect_plugin.php:2269
+#: ../page_post_redirect_plugin.php:2266
 #, php-format
 msgid ""
 "Be sure to include a tag with your class or ID or tag name (entered above) "
@@ -1219,31 +1255,31 @@ msgstr ""
 "the page right after the %1$s tag. Otherwise, it will be the only content "
 "shown."
 
-#: ../page_post_redirect_plugin.php:2269
+#: ../page_post_redirect_plugin.php:2266
 msgid "Add your content below"
 msgstr "Add your content below"
 
-#: ../page_post_redirect_plugin.php:2271
+#: ../page_post_redirect_plugin.php:2268
 msgid "To use a counter, add the following:"
 msgstr "To use a counter, add the following:"
 
-#: ../page_post_redirect_plugin.php:2273
+#: ../page_post_redirect_plugin.php:2270
 msgid "The \"%1$\" will be replaced with the actual seconds."
 msgstr "The \"%1$\" will be replaced with the actual seconds."
 
-#: ../page_post_redirect_plugin.php:2296
+#: ../page_post_redirect_plugin.php:2293
 msgid "You have the Addon Plugin"
 msgstr "You have the Addon Plugin"
 
-#: ../page_post_redirect_plugin.php:2296
+#: ../page_post_redirect_plugin.php:2293
 msgid "activated. This plugin's functionality is now built into the parent"
 msgstr "activated. This plugin's functionality is now built into the parent"
 
-#: ../page_post_redirect_plugin.php:2296
+#: ../page_post_redirect_plugin.php:2293
 msgid "so you no longer need to have the addon plugin installed."
 msgstr "so you no longer need to have the addon plugin installed."
 
-#: ../page_post_redirect_plugin.php:2297
+#: ../page_post_redirect_plugin.php:2294
 msgid ""
 "The plugin will be deactivated now to prevent conflicts. You may delete it "
 "if you desire."

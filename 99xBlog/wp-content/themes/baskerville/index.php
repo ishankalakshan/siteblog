@@ -27,7 +27,7 @@
 			<div class="material-card">
 
 				<div class="blogger-title">
-				<img src="/99x/99xBlog/wp-content/themes/baskerville/images/xian.png">
+				<a href="http://localhost/99xXian/"><img src="/99x/99xBlog/wp-content/themes/baskerville/images/xian.png"></a>
 					<!-- <h2>Xian Blog</h2> -->
 				</div>
 
@@ -50,7 +50,7 @@
 		<div class="material-card">
 
 			<div class="blogger-title">
-			<img src="/99x/99xBlog/wp-content/themes/baskerville/images/Research.png">
+                <a href="http://research.99xtechnology.com/blog/"><img src="/99x/99xBlog/wp-content/themes/baskerville/images/Research.png"></a>
 				<!-- <h2>Research Blog</h2> -->
 			</div>
 
@@ -73,7 +73,7 @@
 		<div class="material-card">
 
 			<div class="blogger-title">
-			<img src="/99x/99xBlog/wp-content/themes/baskerville/images/Technology.png">
+                <a href="http://localhost/99xTechBlog/"><img src="/99x/99xBlog/wp-content/themes/baskerville/images/Technology.png"></a>
 				<!-- <h2>Technology Blog</h2> -->
 			</div>
 

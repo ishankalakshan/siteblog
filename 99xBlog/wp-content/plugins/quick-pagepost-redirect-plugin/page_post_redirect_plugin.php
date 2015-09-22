@@ -6,7 +6,7 @@ Description: Redirect Pages, Posts or Custom Post Types to another location quic
 Author: Don Fischer
 Author URI: http://www.fischercreativemedia.com/
 Donate link: http://www.fischercreativemedia.com/donations/
-Version: 5.1.2
+Version: 5.1.3
 Text Domain: quick-pagepost-redirect-plugin
 Domain Path: /lang
 License: GPLv2 or later
@@ -71,7 +71,7 @@ class quick_page_post_reds {
 	public $pprptypes_ok;
 	
 	function __construct() {
-		$this->ppr_curr_version 		= '5.1.2';
+		$this->ppr_curr_version 		= '5.1.3';
 		$this->ppr_nofollow 			= array();
 		$this->ppr_newindow 			= array();
 		$this->ppr_url 					= array();
@@ -626,8 +626,8 @@ class quick_page_post_reds {
 			};
 		}
 		$joinSQL	= ((int) $allNewWin == 1 || (int) $allNoFoll == 1 || $rewrite ) ? "" : " INNER JOIN {$wpdb->prefix}postmeta AS mt3 ON ( {$wpdb->prefix}posts.ID = mt3.post_id ) ";
-		$whereSQL 	= ((int) $allNewWin == 1 || (int) $allNoFoll == 1 || $rewrite ) ? "" : " AND ( ( mt3.meta_key = '_pprredirect_relnofollow' AND CAST(mt3.meta_value AS CHAR) = '1' ) OR ( mt3.meta_key = '_pprredirect_newwindow' AND CAST(mt3.meta_value AS CHAR) = '1' ) OR ( mt3.meta_key = '_pprredirect_rewritelink' AND CAST(mt3.meta_value AS CHAR) = '1' ) ) ";
-		$finalSQL 	= "SELECT {$wpdb->prefix}posts.ID FROM {$wpdb->prefix}posts INNER JOIN {$wpdb->prefix}postmeta ON ( {$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id ) INNER JOIN {$wpdb->prefix}postmeta AS mt1 ON ( {$wpdb->prefix}posts.ID = mt1.post_id ) INNER JOIN {$wpdb->prefix}postmeta AS mt2 ON ( {$wpdb->prefix}posts.ID = mt2.post_id ) {$joinSQL} WHERE 1=1 AND ( ( {$wpdb->prefix}postmeta.meta_key = '_pprredirect_active' AND CAST({$wpdb->prefix}postmeta.meta_value AS CHAR) = '1' ) AND ( mt1.meta_key = '_pprredirect_type' AND CAST(mt1.meta_value AS CHAR) != '' ) AND ( mt2.meta_key = '_pprredirect_url' AND CAST(mt2.meta_value AS CHAR) != '' ) {$whereSQL}) AND {$wpdb->prefix}posts.post_type NOT IN ('attachment', 'nav_menu_item', 'revision' ) AND (({$wpdb->prefix}posts.post_status = 'publish')) GROUP BY {$wpdb->prefix}posts.ID ORDER BY {$wpdb->prefix}posts.post_date DESC ";
+		$whereSQL 	= ((int) $allNewWin == 1 || (int) $allNoFoll == 1 || $rewrite ) ? "" : " AND ( ( {$wpdb->prefix}postmeta.meta_key = '_pprredirect_active' AND CAST( {$wpdb->prefix}postmeta.meta_value AS CHAR ) = '1') AND ( mt1.meta_key = '_pprredirect_type' AND CAST( mt1.meta_value AS CHAR ) != '' ) AND ( mt2.meta_key = '_pprredirect_url' AND CAST( mt2.meta_value AS CHAR ) != '' )) AND (( mt3.meta_key = '_pprredirect_newwindow' AND CAST( mt3.meta_value AS CHAR ) = '1' ) OR ( mt3.meta_key = '_pprredirect_relnofollow' AND CAST( mt3.meta_value AS CHAR ) = '1' ) OR ( mt3.meta_key = '_pprredirect_rewritelink' AND CAST( mt3.meta_value AS CHAR ) = '1' )) ";
+		$finalSQL 	= "SELECT {$wpdb->prefix}posts.ID FROM {$wpdb->prefix}posts INNER JOIN {$wpdb->prefix}postmeta ON ( {$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id ) INNER JOIN {$wpdb->prefix}postmeta AS mt1 ON ( {$wpdb->prefix}posts.ID = mt1.post_id ) INNER JOIN {$wpdb->prefix}postmeta AS mt2 ON ( {$wpdb->prefix}posts.ID = mt2.post_id ) {$joinSQL} WHERE 1=1 {$whereSQL}	AND {$wpdb->prefix}posts.post_type NOT IN ('attachment', 'nav_menu_item', 'revision' ) AND {$wpdb->prefix}posts.post_status = 'publish' GROUP BY {$wpdb->prefix}posts.ID ORDER BY {$wpdb->prefix}posts.post_date DESC ";
 		$indReds 	= $wpdb->get_results($finalSQL);
 		if( is_array($indReds) && !empty($indReds) ){
 			foreach( $indReds as $key => $qpost ){
@@ -2203,13 +2203,14 @@ class quick_page_post_reds {
 		$timer 			= (int) $secs * 100;
 		$appendTo		= $appMsgTo != '' ? $appMsgTo : get_option( 'qppr_meta_append_to', 'body' );
 		$injectMsg		= $content != '' ? '<div id="ppr_custom_message">'.$content.'</div>' : '';
+		$bfamily 		= qppr_get_browser_family();
 		if( !$load ) {
+			//wp_enqueue_script( 'qppr-meta-redirect-no-load', plugins_url( '/js/qppr_meta_redirect.js', __FILE__ ), array( 'jquery' ), $this->ppr_curr_version, false );
+			wp_enqueue_script( 'qppr-meta-redirect-no-load', plugins_url( '/js/qppr_meta_redirect.min.js', __FILE__ ), array( 'jquery' ), $this->ppr_curr_version, false );
+			wp_localize_script( 'qppr-meta-redirect-no-load', 'qpprMetaData', array( 'browserFamily' => $bfamily,'appendTo' => $appendTo, 'class' => $class, 'secs' => $secs, 'refreshURL' => $refresh_url , 'injectMsg' => $injectMsg ) );
 			echo '<!DOCTYPE html>'."\n";
 			echo '<html>'."\n";
 			echo '<head>'."\n";
-			//wp_enqueue_script( 'qppr-meta-redirect-no-load', plugins_url( '/js/qppr_meta_redirect.js', __FILE__ ), array( 'jquery' ), $this->ppr_curr_version, false );
-			wp_enqueue_script( 'qppr-meta-redirect-no-load', plugins_url( '/js/qppr_meta_redirect.min.js', __FILE__ ), array( 'jquery' ), $this->ppr_curr_version, false );
-			wp_localize_script( 'qppr-meta-redirect-no-load', 'qpprMetaData', array( 'appendTo' => $appendTo, 'class' => $class, 'secs' => $secs, 'refreshURL' => $refresh_url , 'injectMsg' => $injectMsg ) );
 			global $wp_scripts;
 			$allowScripts = array('jquery','qppr-meta-redirect-no-load');
 			$jqnew = isset( $wp_scripts->queue ) ? $wp_scripts->queue : array() ;
@@ -2221,11 +2222,7 @@ class quick_page_post_reds {
 				}
 			}
 			wp_print_scripts();
-			// IE will not redirect an injected meta refresh.
-			if( $is_IE ) {
-				echo '	<meta http-equiv="refresh" content="'.$secs.';url='.$refresh_url.'">';
-			}
-			echo '<head>'."\n";
+			echo '</head>'."\n";
 			echo '<body>'."\n";
 			echo '</body>'."\n";
 			echo '</html>';
@@ -2233,7 +2230,7 @@ class quick_page_post_reds {
 		}else{
 			//wp_enqueue_script( 'qppr-meta-redirect-load', plugins_url( '/js/qppr_meta_redirect.js', __FILE__ ), array( 'jquery' ), $this->ppr_curr_version, false );
 			wp_enqueue_script( 'qppr-meta-redirect-load', plugins_url( '/js/qppr_meta_redirect.min.js', __FILE__ ), array( 'jquery' ), $this->ppr_curr_version, false );
-			wp_localize_script( 'qppr-meta-redirect-load', 'qpprMetaData', array('appendTo' => $appendTo, 'class' => $class, 'secs' => $secs, 'refreshURL' => $refresh_url , 'injectMsg' => $injectMsg ) );
+			wp_localize_script( 'qppr-meta-redirect-load', 'qpprMetaData', array('browserFamily' => $bfamily, 'appendTo' => $appendTo, 'class' => $class, 'secs' => $secs, 'refreshURL' => $refresh_url , 'injectMsg' => $injectMsg ) );
 		}
 		return;
 	}
@@ -2254,7 +2251,7 @@ class quick_page_post_reds {
 				</tr>
 				<tr>
 					<th scope="row"><label><?php echo __( 'Redirect Seconds', 'quick-pagepost-redirect-plugin' );?>:</label></th>
-					<td><input type="text" size="5" name="qppr_meta_addon_sec" value="<?php echo get_option('qppr_meta_addon_sec', '0'); ?>"/><span><code>0</code> = <?php echo __( 'instant', 'quick-pagepost-redirect-plugin' );?>*. <code>10</code> <?php echo __( 'would redirect 10 seconds after the required element is loaded (i.e., body or an element with a specific class). *Intsant will still have a \'slight\' delay, as some content needs to load before the redirect occurs.', 'quick-pagepost-redirect-plugin' );?></span></td>
+					<td><input type="text" size="5" name="qppr_meta_addon_sec" value="<?php echo get_option('qppr_meta_addon_sec', '0'); ?>"/><span><code>0</code> = <?php echo __( 'instant', 'quick-pagepost-redirect-plugin' );?>*. <code>10</code> <?php echo __( 'would redirect 10 seconds after the required element is loaded (i.e., body or an element with a specific class). *Intsant will still have a \'slight\' delay, as some content needs to load before the redirect occurs. Settings on individual pages will override this setting.', 'quick-pagepost-redirect-plugin' );?></span></td>
 				</tr>
 				<tr>
 					<th scope="row"><label><?php echo __( 'Redirect Trigger', 'quick-pagepost-redirect-plugin' );?>:</label></th>
@@ -2484,4 +2481,51 @@ function qppr_delete_quick_redirect( $request_url = '' ){
 	$redirect_plugin->quickppr_redirectsmeta	= get_option( 'quickppr_redirects_meta', array() );
 	$redirect_plugin->quickppr_redirects 		= get_option( 'quickppr_redirects', array() );
 	return true;
+}
+
+/**
+* qppr_get_browser_family - helper function that uses HTTP_USER_AGENT to determine browser family (for meta redirect).
+* @param type string either 'name' or 'class'
+* @return string returns browser family name or class (using sanitize_title_with_dashes function).
+*		returns 'unknown' if browser family is not known.
+* @since: 5.1.3
+* @example:
+* *****************
+	$browserFamilyName = qppr_get_browser_family( 'name' );
+* *****************
+*/
+function qppr_get_browser_family( $type = 'class' ){ //name or class
+	global $is_iphone,$is_chrome,$is_safari,$is_NS4,$is_opera,$is_macIE,$is_winIE,$is_gecko,$is_lynx,$is_IE,$is_edge;
+	if( $is_IE ){
+		if( $is_macIE )
+			$name = 'Mac Internet Explorer';
+		if( $is_winIE )
+			$name = 'Windows Internet Explorer';
+		$name = 'Internet Explorer';
+	}else if( $is_iphone || $is_safari ){
+		if( $is_safari )
+			$name = 'Safari';
+		$name = 'iPhone Safari';
+	}else if( $is_edge ){
+		$name = 'Microsoft Edge';
+	}else if( $is_chrome ){
+		$name = 'Google Chrome';
+		if ( isset($_SERVER['HTTP_USER_AGENT']) ) {
+			if ( strpos($_SERVER['HTTP_USER_AGENT'], 'Edge') !== false )
+				$name = 'Microsoft Edge';
+		}
+	}else if( $is_NS4 ){
+		$name = 'Netscape 4';
+	}else if( $is_opera ){
+		$name = 'Opera';
+	}else if( $is_gecko ){
+		$name = 'FireFox';
+	}else if( $is_lynx ){
+		$name = 'Lynx';
+	}else{
+		$name = 'Unknown';	
+	}
+	if($type == 'name')
+		return $name;
+	return sanitize_title_with_dashes( 'browser-'.$name );
 }

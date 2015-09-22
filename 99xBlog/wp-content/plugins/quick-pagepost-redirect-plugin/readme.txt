@@ -5,13 +5,13 @@ Tags: redirect, 301, 302, meta, plugin, forward, nofollow, posts, pages, 404, cu
 Requires at least: 4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tested up to: 4.3
-Stable tag: 5.1.2
+Tested up to: 4.3.1
+Stable tag: 5.1.3
 
 Easily redirect pages/posts or custom post types to another page/post or external URL by specifying the redirect URL and type (301, 302, 307, meta).
 
 == Description ==
-**Current Version 5.1.2**
+**Current Version 5.1.3**
 
 This plugin has two redirect functionalities - **"Quick Redirects"** and **"Individual Redirects"**:
 
@@ -42,10 +42,11 @@ For best results use some form of WordPress Permalink structure. If you have oth
 
 = What You CANNOT Do: =
 * This plugin does not have wild-card redirect features.
+* This plugin DOES NOT modify the .htaccess file. It works using the WordPress function wp_redirect(), which is a form of PHP header location redirect.
 * You cannot redirect the Home (Posts) page - unless you set a page as the home page and redirect that.
 * If your theme uses some form of custom layout or functionality, some features may not work like open on a new window or no follow functionality UNLESS you have the **Use jQuery?** option to set.
 
-This plugin is not compatible with WordPress versions less than 3.9. Requires PHP 5.2+.
+This plugin is not compatible with WordPress versions less than 4.0. Requires PHP 5.2+.
 
 **PLEASE NOTE:** A new page or post needs to be Published in order for Page/Post redirect to happen for Individual Redirects (existing page is not necessary for Quick Redirects). It WILL work on a DRAFT Status Post/Page ONLY, and I mean ONLY, if the Post/Page has FIRST been Published and the re-saved as a Draft. This does not apply to Quick Redirects.
 
@@ -71,7 +72,7 @@ This plugin is not compatible with WordPress versions less than 3.9. Requires PH
 
 = If you install this plugin through WordPress 2.8+ plugin search interface: =
 1. Click Install `Quick Page/Post Redirect Plugin`
-1. Activate the plugin through the 'Plugins' menu in WordPress
+1. Activate the plugin through the 'Plugins' menu.
 1. Once Activated, you can add a redirect by entering the correct information in the `Quick Page/Post Redirect` box in the edit section of a page or post
 1. You can create a redirect with the 'Quick Redirects' option located in the Quick Redirects admin menu.
 
@@ -163,7 +164,6 @@ Still not sure? Try 302 for now - at least until you have a little time to read 
 NO it isn't! Check the plugin FAQs/Help page for a more up to date list of Frequently Asked Questions. The plugin now has a live feed of FAQs that can be updated regularly. If you have something you think we should add, please let us know.
 
 == Screenshots ==
-
 1. Quick Redirects setup page - Now with ajax editing.
 2. Import and Export features.
 3. Options/Setting Page.
@@ -173,6 +173,13 @@ NO it isn't! Check the plugin FAQs/Help page for a more up to date list of Frequ
 7. Meta Redirect Options Page.
 
 == Changelog ==
+= 5.1.3 =
+* **Update:** Updated English Translations.
+* **Bug Fix:** Fixed Meta redirect functions so browsers that no longer allow refresh redirects can still use Meta redirects (i.e., Firefox, Edge, some IE).
+* **Bug Fix:** Fixed Function for Individual Redirects for New Window functionality. Was not working unless both No Follow and New Window were selected.
+* **TODO:** Add New Window and No Follow to links where the URL has been rewritten. Currently if you rewrite the URL neither will work as they are referenced with the original URL, not the rewrite.
+* **TODO (Still):** Add Canonical Redirect filter to fix potential www/non-www redirect match problems.
+
 = 5.1.2 =
 * **Update:** Updated English Translations.
 * **Update:** Updated license.txt file (had wrong version of license).
@@ -339,5 +346,5 @@ NO it isn't! Check the plugin FAQs/Help page for a more up to date list of Frequ
 * Initial Plugin creation (7/1/2009)
 
 == Upgrade Notice ==
-= 5.1.2 =
-* WP 4.3 Update - Bug Fixes, Updates, and some Features Added.
+= 5.1.3 =
+* Bug Fixes to Meta Redirect and New Window functionality.
